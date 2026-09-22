@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <section class="card-painel">
+            
+            <div class="header-secao">
+                <div>
+                    <h2>Projetos Cadastrados</h2>
+                    <p class="subtitulo">Gerencie os projetos ativos no sistema</p>
+                </div>
+                <a href="novo_projeto.html" class="btn-primary">+ Novo Projeto</a>
+            </div>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Data de Início</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if context %}
+                            {% for projeto in context %}
+                                <tr>
+                                    <td> {{projeto.nome}} </td>
+                                    <td> {{projeto.descricao}} </td>
+                                    <td> {{projeto.data_inicio}} </td>
+                                    <td>
+                                        <a href="detalhes_projeto.html" class="btn-detalhes">Detalhes</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                                <tr>
+                                    <td colspan="4"> Não existe projetos cadastrados </td>
+                                </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+{% endblock conteudo %}
+

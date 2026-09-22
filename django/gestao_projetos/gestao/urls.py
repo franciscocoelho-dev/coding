@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import gestao_home
+from .views import gestao_home, listar_projetos
 
 urlpatterns = [
-    path('', gestao_home),
-    # path('projetos', listar_projetos())
+    path('', gestao_home, name = 'gestao-home'),
+    path('projetos/', listar_projetos, name = 'listar-projetos')
 ]
+
+
