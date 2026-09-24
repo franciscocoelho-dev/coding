@@ -8,7 +8,7 @@
                     <h2>Projetos Cadastrados</h2>
                     <p class="subtitulo">Gerencie os projetos ativos no sistema</p>
                 </div>
-                <a href="novo_projeto.html" class="btn-primary">+ Novo Projeto</a>
+                <a href="" class="btn-primary">+ Novo Projeto</a>
             </div>
 
             <div class="tabela-container">
@@ -29,14 +29,14 @@
                                     <td> {{projeto.descricao}} </td>
                                     <td> {{projeto.data_inicio}} </td>
                                     <td>
-                                        <a href="detalhes_projeto.html" class="btn-detalhes">Detalhes</a>
+                                        <a href="" class="btn btn-primary"> Visualizar </a>
                                     </td>
                                 </tr>
                             {% endfor %}
                         {% else %}
-                                <tr>
-                                    <td colspan="4"> Não existe projetos cadastrados </td>
-                                </tr>
+                            <tr>
+                                <td colspan="4"> Não existe projetos cadastrados </td>
+                            </tr>
                         {% endif %}
                     </tbody>
                 </table>

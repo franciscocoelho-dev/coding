@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+    <form action="">
+        {% csrf_token %}
+        {{form_projeto}}
+
+        <input type="submit" class="btn btn-primary" value="Cadastrar Projeto">
+    </form>
+{% endblock conteudo %}
