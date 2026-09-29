@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Projeto
 from .forms import ProjetoForm
 
@@ -14,10 +14,16 @@ def listar_projetos(request):
     )
 
 def adicionar_projetos(request):
-    form = ProjetoForm()
-    if request.method == 'GET':
-        return render(request, 'gestao/adicionar-projeto.html', {'form_projeto': form})
-    else: #POST
-        
+    if request.method == 'POST':
+        form = ProjetoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(listar_projetos)
+    else:
+        # request.method == 'GET'
+        form = ProjetoForm()
+    return render(request, 'gestao/adicionar-projeto.html', {'form': form})
+
+
+
     
-    return render(request, 'gestao/adicionar-projeto.html')
