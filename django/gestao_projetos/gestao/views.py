@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import Projeto
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Projeto, Tarefa
 from .forms import ProjetoForm
 
 def gestao_home(request):
@@ -25,5 +25,10 @@ def adicionar_projetos(request):
     return render(request, 'gestao/adicionar-projeto.html', {'form': form})
 
 
+def detalhar_projeto(request, id):
+    projeto = get_object_or_404(Projeto, pk=id)
+    tarefas = Tarefa.objects.filter(projeto_vinculado = projeto)
+    print(tarefas)
+    return render(request, 'gestao/detalhes-projeto.html', {'projeto': projeto, 'tarefas': 'tarefas'})
 
     

@@ -29,7 +29,7 @@
                                     <td> {{projeto.descricao}} </td>
                                     <td> {{projeto.data_inicio}} </td>
                                     <td>
-                                        <a href="" class="btn btn-primary"> Visualizar </a>
+                                        <a href="{% url "detalhar-projeto" projeto.pk %}" class="btn btn-primary"> Visualizar </a>
                                     </td>
                                 </tr>
                             {% endfor %}

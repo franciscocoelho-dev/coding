@@ -9,13 +9,8 @@ class ProjetoForm(ModelForm):
         exclude = ('status',)
 
         widgets = {
-            'nome' : forms.TextInput(attrs={
-                'placeholder': 'Informe o nome do projeto'
-            }),
-
-            'data_inicio': forms.DateInput(attrs={
-                'type': 'date'
-            })
+            'nome' : forms.TextInput(attrs={'placeholder': 'Informe o nome do projeto'}),
+            'data_inicio': forms.DateInput(attrs={'type': 'date'}),
         }
 
     def clean_nome(self):

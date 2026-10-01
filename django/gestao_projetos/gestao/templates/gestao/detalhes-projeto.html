@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+    <section class="card-painel">
+        <div class="header-secao">
+            <div>
+                <h2>{{projeto.nome}}</h2>
+                <p class="subtitulo">Data de Início: {{projeto.data_inicio}}</p>
+            </div>
+            <a href="{% url "listar-projetos" %}" class="btn-secondary">Voltar para Projetos</a>
+        </div>
+        <div class="descricao-box">
+            <strong>Descrição do Projeto:</strong>
+            <p>{{projeto.descricao}}</p>
+        </div>
+    </section>
+
+
+    <section class="card-painel margin-top">
+        <div class="header-secao">
+            <div>
+                <h3>Tarefas do Projeto</h3>
+                <p class="subtitulo">Gerencie as atividades deste projeto</p>
+            </div>
+            <a href="nova_tarefa.html" class="btn-primary">+ Nova Tarefa</a>
+        </div>
+
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Prazo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if tarefas %}
+                        {% for tarefa in tarefas %}
+                            <tr>
+                                <td>{{tarefa.titulo}}</td>
+                                <td>{{tarefa.prazo_conclusao}}</td>
+                                <td>
+                                    {% if tarefa.status == True %}
+                                        <span class="badge badge-alerta">Pendente</span>
+                                    {% else %}
+                                        <span class="badge badge-sucesso">Concluído</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="detalhes_tarefa.html" class="btn-detalhes">Detalhes</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                            <tr>
+                                <td> Não existe tarefas cadastradas </td>
+                            </tr>
+                    {% endif %}
+
+
+
+                    
+
+                    
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

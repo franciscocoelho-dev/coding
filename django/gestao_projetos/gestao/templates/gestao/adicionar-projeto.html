@@ -2,20 +2,29 @@
 
 
 {% block conteudo %}
-    <form action="{% url "adicionar-projeto" %}" method="POST" >
-        {% csrf_token %}
 
-        {% for item in form %}
-            <div class="form-group">
-                {{item.label}}
-                {{item}}
-                <span style="color: red">
-                    {{item.errors}}
-                </span>
-                
+    <section class="card-painel">
+        <h2>Cadastrar Novo Projeto</h2>
+        <p class="subtitulo">Preencha os campos abaixo para registrar um novo projeto no sistema.</p>
+
+        <form action="{% url "adicionar-projeto" %}" method="POST" >
+            {% csrf_token %}
+
+            {% for item in form %}
+                <div class="form-group" style="margin-top:25px">
+                    {{item.label}}
+                    {{item}}    
+                    <span style="color: red">
+                        {{item.errors}}
+                    </span>   
+                </div>
+            {% endfor %}
+
+            <div class="form-actions" style="margin-top: 20px">
+                <button class="btn btn-primary" type="submit"> Cadastrar Projeto </button>
+
+                <a href="{% url "listar-projetos" %}" class="btn-secondary">Cancelar</a>
             </div>
-        {% endfor %}
-
-        <button style="margin-top: 2rem" class="btn btn-primary" type="submit"> Cadastrar Projeto </button>
-    </form>
+        </form>
+    </session>
 {% endblock conteudo %}
