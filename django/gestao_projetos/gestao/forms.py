@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Projeto
+from .models import Projeto, Tarefa
 
 class ProjetoForm(ModelForm):
     class Meta:
@@ -18,3 +18,10 @@ class ProjetoForm(ModelForm):
         if len(valor_nome) < 20:
             self.add_error('nome', 'O nome deve ter no mínimo 20 caracteres')
         return valor_nome
+
+
+class TarefaForm(ModelForm):
+    class Meta:
+        model = Tarefa
+        fields = '__all__'
+        exclude = ('status', 'projeto_vinculado', )

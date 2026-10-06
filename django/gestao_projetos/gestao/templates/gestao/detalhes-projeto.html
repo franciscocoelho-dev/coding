@@ -23,7 +23,7 @@
                 <h3>Tarefas do Projeto</h3>
                 <p class="subtitulo">Gerencie as atividades deste projeto</p>
             </div>
-            <a href="nova_tarefa.html" class="btn-primary">+ Nova Tarefa</a>
+            <a href="{% url "cadastrar-tarefa" projeto.id  %}" class="btn-primary">+ Nova Tarefa</a>
         </div>
 
         <div class="tabela-container">
@@ -37,34 +37,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% if tarefas %}
-                        {% for tarefa in tarefas %}
-                            <tr>
-                                <td>{{tarefa.titulo}}</td>
-                                <td>{{tarefa.prazo_conclusao}}</td>
-                                <td>
-                                    {% if tarefa.status == True %}
-                                        <span class="badge badge-alerta">Pendente</span>
-                                    {% else %}
-                                        <span class="badge badge-sucesso">Concluído</span>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    <a href="detalhes_tarefa.html" class="btn-detalhes">Detalhes</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    {% else %}
-                            <tr>
-                                <td> Não existe tarefas cadastradas </td>
-                            </tr>
-                    {% endif %}
 
-
-
-                    
-
-                    
+                    {% for tarefa in tarefas %}
+                        <tr>
+                            <td>{{tarefa.titulo}}</td>
+                            <td>{{tarefa.prazo_conclusao}}</td>
+                            <td>
+                                {% if tarefa.status == True %}
+                                    <span class="badge badge-alerta">Pendente</span>
+                                {% else %}
+                                    <span class="badge badge-sucesso">Concluído</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="detalhes_tarefa.html" class="btn-detalhes">Detalhes</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4"> Não existe tarefas cadastradas </td>
+                        </tr>
+                    {% endfor %} 
                 </tbody>
             </table>
         </div>
