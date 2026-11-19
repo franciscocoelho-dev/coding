@@ -1,0 +1,24 @@
+{% if messages %}
+    {% for message in messages %}
+        {{message.tags}} {{message}}
+
+        <!-- 
+            <div class="alert {{message.tags}}" role="alert">
+                {{message}}
+            </div>
+        -->
+    {% endfor %}
+{% endif %}
+
+<form action="{% url "register" %}" method="POST">
+    {% csrf_token %}
+    {{user_form}}
+
+    <!--
+        {{user_form.username.label}}
+        {{user_form.username}}
+        {{user_form.username.errors}}
+    -->
+
+    <input type="submit" value="Cadastrar">
+</form>
